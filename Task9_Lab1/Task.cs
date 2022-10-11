@@ -41,8 +41,8 @@ public class Task
     public static string RomanToArabic(Match match)
     {
         string input = match.Value.ToString();
-        // Define two arrays equal to the number of letters in the match.
 
+        // Checking of possible empty strings
         if (input.Length == 0)
         {
             return "";
@@ -50,14 +50,17 @@ public class Task
 
         else
         {
+            // Sum initialization
             int result = 0;
-
-            foreach (var num in romanNums)
+            while (input.Length != 0)
             {
-                if (input.Length != 0)
+                foreach (var num in romanNums)
                 {
+
+                    // Checking the begining of match
                     while (input.StartsWith(num.Key))
                     {
+                        // Calculating the result and trimming the copy
                         result += num.Value;
                         input = input.Remove(0, num.Key.Length);
                     }
